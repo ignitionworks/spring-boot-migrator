@@ -87,6 +87,11 @@ public class SpringBootUpgradeReportSection {
      */
     @NotNull
     private Set<String> contributors;
+    /**
+     * Complexity (scale 1 to 5)
+     */
+    @NotNull
+    private Integer complexity;
 
     @NotNull
     private SpringBootUpgradeReportSectionHelper<?> helper;
@@ -206,7 +211,10 @@ public class SpringBootUpgradeReportSection {
         }
         if(projects != null){
             String projectsList = projects.stream().collect(Collectors.joining(", "));
-            sb.append("**Projects:** ").append(projectsList).append(ls);
+            sb.append("**Projects:** ").append(projectsList).append(" + ").append(ls);
+        }
+        if(complexity != null) {
+            sb.append("**Complexity:** ").append(complexity).append(ls);
         }
     }
 

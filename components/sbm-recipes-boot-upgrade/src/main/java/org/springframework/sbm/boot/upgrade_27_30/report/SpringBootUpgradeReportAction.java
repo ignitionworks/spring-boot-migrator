@@ -129,6 +129,7 @@ public class SpringBootUpgradeReportAction implements Action {
         Map<String, Object> data = dataProvider.getData(context, sections);
         String renderedHeader = renderTemplate("header", header, data);
 
+        data.put("totalComplexity", 25);
         String renderedFooter = renderTemplate("footer", footer, data);
         String renderedReport = renderReport(renderedHeader, renderedSections, renderedFooter);
         upgradeReportProcessor.processReport(renderedReport);
